@@ -18,6 +18,7 @@ namespace EmployeeManagement.Web.Pages
 
         private void LoadEmployees()
         {
+            System.Threading.Thread.Sleep(3000);
             Employee employee1 = new Employee
             {
                 EmployeeId = 1,
@@ -26,7 +27,7 @@ namespace EmployeeManagement.Web.Pages
                 Email = "john@gmail.com",
                 DateOfBirth = new DateTime(1980, 10, 23),
                 Gender = Gender.Male,
-                Department = new Department { DepartmentId = 1, DepartmentName = "IT" },
+                DepartmentID = 1, 
                 PhotoPath = "../images/employee-logo.png"
             };
 
@@ -38,7 +39,7 @@ namespace EmployeeManagement.Web.Pages
                 Email = "mary@gmail.com",
                 DateOfBirth = new DateTime(1979, 09, 05),
                 Gender = Gender.Female,
-                Department = new Department { DepartmentId = 2, DepartmentName = "HR" },
+                DepartmentID = 2,
                 PhotoPath = "../images/employee-female-logo.png"
             };
 
@@ -50,7 +51,7 @@ namespace EmployeeManagement.Web.Pages
                 Email = "sam@gmail.com",
                 DateOfBirth = new DateTime(1985, 01, 30),
                 Gender = Gender.Male,
-                Department = new Department { DepartmentId = 3, DepartmentName = "Payroll" },
+                DepartmentID = 3,
                 PhotoPath = "../images/employee-logo.png"
             };
 
@@ -62,7 +63,7 @@ namespace EmployeeManagement.Web.Pages
                 Email = "sara@gmail.com",
                 DateOfBirth = new DateTime(1982, 06, 25),
                 Gender = Gender.Male,
-                Department = new Department { DepartmentId = 3, DepartmentName = "Payroll" },
+                DepartmentID = 3,
                 PhotoPath = "../images/employee-female-logo.png"
             };
 
