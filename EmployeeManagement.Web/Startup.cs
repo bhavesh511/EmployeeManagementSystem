@@ -1,4 +1,6 @@
+using AutoMapper;
 using EmployeeManagement.Web.Interface;
+using EmployeeManagement.Web.Models;
 using EmployeeManagement.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -29,6 +31,7 @@ namespace EmployeeManagement.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddAutoMapper(typeof(EmployeeProfile));
             services.AddHttpClient<IEmployeeWebService, EmployeeWebService>(Client =>
                 {
                     Client.BaseAddress = new Uri("https://localhost:5002/");
