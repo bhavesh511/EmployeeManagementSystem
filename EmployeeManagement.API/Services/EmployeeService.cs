@@ -41,7 +41,9 @@ namespace EmployeeManagement.API.Services
 
         public async Task<Employee> GetEmployee(int EmployeeId)
         {
-            return await _appDbContext.Employees.FirstOrDefaultAsync(e => e.EmployeeId == EmployeeId);
+            return await _appDbContext.Employees
+                .Include(e => e.Departments)
+                .FirstOrDefaultAsync(e => e.EmployeeId == EmployeeId);
         }
 
         public async Task<IEnumerable<Employee>> GetEmployees()

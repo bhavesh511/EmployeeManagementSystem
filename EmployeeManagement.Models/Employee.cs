@@ -16,10 +16,14 @@ namespace EmployeeManagement.Models
         [Required]
         [MinLength(2)]
         public string LastName { get; set; }
+
+        [EmailAddress]
         public string Email { get; set; }
         public DateTime DateOfBirth { get; set; }
         public Gender Gender { get; set; }
         public int DepartmentID { get; set; }
         public string PhotoPath { get; set; }
+
+        public Department Departments { get; set; }
     }
 }

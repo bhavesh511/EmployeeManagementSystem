@@ -1,9 +1,11 @@
 ﻿using EmployeeManagement.API.Interface;
 using EmployeeManagement.API.Models;
 using EmployeeManagement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EmployeeManagement.API.Services
 {
@@ -16,14 +18,14 @@ namespace EmployeeManagement.API.Services
             _appDbContext = appDbContext;
         }
 
-        public IEnumerable<Department> GetDepartments()
+        public async Task<IEnumerable<Department>> GetDepartments()
         {
-            return _appDbContext.Departments;
+            return await _appDbContext.Departments.ToListAsync();
         }
         
-        public Department GetDepartment(int DepartmentID)
+        public async Task<Department> GetDepartment(int DepartmentID)
         {
-            return _appDbContext.Departments.FirstOrDefault(d => d.DepartmentID == DepartmentID);
+            return await _appDbContext.Departments.FirstOrDefaultAsync(d => d.DepartmentID == DepartmentID);
         }
     }
 }

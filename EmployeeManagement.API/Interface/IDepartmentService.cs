@@ -1,11 +1,12 @@
 ﻿using EmployeeManagement.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EmployeeManagement.API.Interface
 {
     public interface IDepartmentService
     {
-        IEnumerable<Department> GetDepartments();
-        Department GetDepartment(int DepartmentID);
+        Task<IEnumerable<Department>> GetDepartments();
+        Task<Department> GetDepartment(int DepartmentID);
     }
 }

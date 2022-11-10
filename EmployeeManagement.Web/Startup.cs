@@ -1,3 +1,5 @@
+using EmployeeManagement.Web.Interface;
+using EmployeeManagement.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +29,14 @@ namespace EmployeeManagement.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            
+            services.AddHttpClient<IEmployeeWebService, EmployeeWebService>(Client =>
+                {
+                    Client.BaseAddress = new Uri("https://localhost:5002/");
+                });
+            services.AddHttpClient<IDepartmentWebService, DepartmentWebService>(Client =>
+            {
+                Client.BaseAddress = new Uri("https://localhost:5002/");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
