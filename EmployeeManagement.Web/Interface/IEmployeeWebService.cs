@@ -9,5 +9,6 @@ namespace EmployeeManagement.Web.Interface
         Task<IEnumerable<Employee>> GetEmployees();
 
         Task<Employee> GetEmployee(int id);
+        Task<string> UpdateEmployee(Employee updateEmployee);
     }
 }

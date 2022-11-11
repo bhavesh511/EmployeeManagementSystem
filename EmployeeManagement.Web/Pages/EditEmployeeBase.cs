@@ -29,7 +29,10 @@ namespace EmployeeManagement.Web.Pages
         public string Id { get; set; }
 
         [Inject]
-        public IMapper mapper { get; set; } 
+        public IMapper mapper { get; set; }
+
+        [Inject]
+        public NavigationManager navigationManager { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -51,8 +54,15 @@ namespace EmployeeManagement.Web.Pages
             //EditEmployeeModel.Departments = Employee.Departments;
         }
 
-        protected void HandleValidSubmit()
-        { 
+        protected async Task HandleValidSubmit()
+        {
+            mapper.Map(EditEmployeeModel, Employee);
+            var result = await EmployeeWebService.UpdateEmployee(Employee);
+
+            if (result != null)
+            {
+                navigationManager.NavigateTo("/");
+            }
         }
     }
 }
