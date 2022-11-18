@@ -33,6 +33,8 @@ namespace EmployeeManagement.API
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddControllers();
+            services.AddSwaggerGen();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +43,17 @@ namespace EmployeeManagement.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
+
+            
+            
+            //app.UseSwaggerUI(c =>
+            //{
+                
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Api v1");
+            //});
 
             app.UseHttpsRedirection();
 

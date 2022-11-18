@@ -20,6 +20,7 @@ namespace EmployeeManagement.API.Controllers
             _employeeService = employeeService;
         }
 
+        [HttpGet]
         public async Task<ActionResult> GetEmployees()
         {
             try

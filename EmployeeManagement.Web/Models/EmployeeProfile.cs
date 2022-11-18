@@ -10,6 +10,7 @@ namespace EmployeeManagement.Web.Models
             CreateMap<Employee, EditEmployeeModel>()
                 .ForMember(dest => dest.ConfirmEmail, opt => opt.MapFrom(src => src.Email));
             CreateMap<EditEmployeeModel, Employee>();
+            CreateMap<EditEmployeeModel, InsertEmployee>();
         }
     }
 }

@@ -39,6 +39,11 @@ namespace EmployeeManagement.Web.Pages
             }
         }
 
+        protected async Task EmployeeDeleted()
+        {
+            Employees = (await EmployeeWebService.GetEmployees()).ToList();
+        }
+
         //private void LoadEmployees()
         //{
         //    System.Threading.Thread.Sleep(3000);

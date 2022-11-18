@@ -8,6 +8,9 @@ using System;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Nodes;
+using System.Text.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace EmployeeManagement.Web.Services
 {
@@ -31,13 +34,33 @@ namespace EmployeeManagement.Web.Services
         }
 
         public async Task<string> UpdateEmployee(Employee updateEmployee)
-        {            
-            var resu = await _httpClient.PutAsJsonAsync<Employee>("api/employee", updateEmployee);
-            if (resu.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            
+            
+            var result = await _httpClient.PutAsJsonAsync<Employee>("api/employee", updateEmployee);
+            if (result.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return "success"  ;
+            }
+            return null;
+        }
+        
+        public async Task<string> CreateEmployee(InsertEmployee newEmployee)
+        {
+            var result = await _httpClient.PostAsJsonAsync<InsertEmployee>("api/employee", newEmployee);
+            if(result.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 return "success";
             }
-            return null;
+            else
+            {
+                return "failed";
+            }
+        }
+
+        public async Task DeleteEmployee(int id)
+        {
+            await _httpClient.DeleteAsync($"api/employee/{id}");
         }
     }
 }
