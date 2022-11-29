@@ -1,0 +1,18 @@
+﻿<input id="firstname" @attributes="InputParameter" />
+
+@code
+{
+    [Parameter]
+    public Dictionary<string, object> InputParameter { get; set; } = new Dictionary<string, object>()
+    {
+        {"reuqired" ,"required"},
+         {"placeholder","child component Placeholder"},
+         {"size","50"}
+    };
+
+    [Parameter]
+    public string placeholder { get; set; } = "child component Placeholder";
+
+    [Parameter]
+    public string Required { get; set; } = "reuired";
+}
